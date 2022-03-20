@@ -31,5 +31,19 @@ c ={
     'b':2,
     'c':3,
 }
-for item in enumerate(c):
-    print(item, c[item])
+
+
+# a = {}
+# b = {'b':2}
+# c = a + b
+# print(a)
+
+a = []
+print(a)
+for i in range(10):
+    a.append(i)
+print(a)
+c = [str(i) for i in a]
+str = ","
+b = str.join(c)
+print(b)
