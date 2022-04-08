@@ -1,4 +1,3 @@
-
 inp = input()
 num = []
 data = []
