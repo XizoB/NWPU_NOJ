@@ -1,49 +1,76 @@
-import decimal
-from errno import ELIBBAD
-import re
+import copy
+import random
+class Solution:
+    def __init__(self, nums):
+        self.nums = nums
 
-a = decimal.Decimal('0.1')
-b = decimal.Decimal('0.2')
-c = decimal.Decimal('0.3')
-print(a + b - c)
-print(1/3)
-print(decimal.Decimal(1)/decimal.Decimal(3))
-decimal.getcontext().prec = 50
-print(decimal.Decimal('1')/decimal.Decimal('3'))
-print("{0}*{1}={2:0>8}".format(3,2,2*3))
-print("{:*^30}".format('center'))
-print("{:.3f}".format(3.1415926))
-print( ' '.join([str(i) for i in range(5)]))
-ans = [i for i in range(5)]
-print([i for i in range(5)])
-b = "{}{}".format('b',4)
-print(b)
-a = ['123','245',456]
-print(a[1][::-1])
-list1 = [1,2,3,4,5]
-print(list1[-5:-1])
-list3 = [1,2,5,46,8]
-list3.sort(reverse=True)
-print(list3)
+    def reset(self):
+        self.nums = self.nums.copy().copy()
+        return self.nums
 
-c ={
-    'a':1,
-    'b':2,
-    'c':3,
-}
+    def shuffle(self):
+        for i in range(len(self.nums)):
+            j = random.randrange(i, len(self.nums))
+            self.nums[i], self.nums[j] = self.nums[j], self.nums[i]
+        return self.nums
 
 
-# a = {}
-# b = {'b':2}
-# c = a + b
-# print(a)
+nums = [i for i in range(3)]
+sh = Solution(nums)
+for i in range(6):
+    #a = sh.reset()
+    a = sh.shuffle()
+    print(a)
 
-a = []
-print(a)
-for i in range(10):
-    a.append(i)
-print(a)
-c = [str(i) for i in a]
-str = ","
-b = str.join(c)
-print(b)
+# def permutations(arr, position, end):
+#     if position == end:
+#         print(arr)
+#     else:
+#         for index in range(position, end):
+#             arr[index], arr[position] = arr[position], arr[index]
+#             permutations(arr, position + 1, end) # 递归调用
+#             arr[index], arr[position] = arr[position], arr[index]  # 还原到交换前的状态，为了进行下一次交换
+ 
+ 
+# arr = [1, 2, 3]
+# permutations(arr, 0, len(arr))
+
+# import itertools
+# n=3
+# a=[str(i) for i in range(n)]
+# s=""
+# s=s.join(a)
+# print(s)
+# s = '021'
+# for i in itertools.permutations(s,2):
+#     print (''.join(i))
+
+# import itertools
+# n=3
+# a=[str(i) for i in range(n)]
+# s=""
+# s=s.join(a)
+# for i in itertools.combinations(s,2):
+#     print (''.join(i))
+
+
+visit = [True, True, True]
+temp = ["" for x in range(0, 3)]
+
+ 
+def dfs(position):
+    # 递归出口
+    if position == 2:#len(arr):
+        print(temp)
+        return
+    # 递归主体
+    for index in range(0, len(arr)):
+        if visit[index] == True:
+            temp[position] = arr[index]
+            visit[index] = False  # 试探 
+            dfs(position + 1)
+            visit[index] = True  # 回溯。非常重要
+ 
+ 
+arr = [1, 2, 3]
+#dfs(0)
