@@ -63,5 +63,7 @@ print(int(3.2))
 a = [1, 2, 3]
 print(*a)
 
-a = ["1","2"]
-print(a.index("3"))
+c, d = 1, 2
+print(c, d)
+#a = 
+print(any([0, 0, 0, 1]))
